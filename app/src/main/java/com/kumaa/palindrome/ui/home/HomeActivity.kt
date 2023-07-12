@@ -5,15 +5,14 @@ import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.kumaa.palindrome.data.remote.ApiConfig
-import com.kumaa.palindrome.data.repository.UserRepository
+import androidx.paging.ExperimentalPagingApi
 import com.kumaa.palindrome.databinding.ActivityHomeBinding
 import com.kumaa.palindrome.ui.userList.UserListActivity
 
+@ExperimentalPagingApi
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding : ActivityHomeBinding
     private lateinit var viewModel: HomeViewModel
-    private lateinit var repo: UserRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -25,10 +24,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel(){
-        val apiService = ApiConfig.getApiService()
-        repo = UserRepository(apiService)
-        viewModel = ViewModelProvider(this, HomeViewModelFactory(repo))[HomeViewModel::class.java]
-
+        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
     }
 
     private fun setupAction(){

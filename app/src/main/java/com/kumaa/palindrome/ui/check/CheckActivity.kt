@@ -4,11 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.paging.ExperimentalPagingApi
 import com.google.android.material.snackbar.Snackbar
 import com.kumaa.palindrome.R
 import com.kumaa.palindrome.databinding.ActivityCheckBinding
 import com.kumaa.palindrome.ui.home.HomeActivity
 
+@ExperimentalPagingApi
 class CheckActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCheckBinding
     private lateinit var viewModel: CheckViewModel

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kumaa.palindrome.data.remote.ApiConfig
@@ -11,7 +12,7 @@ import com.kumaa.palindrome.data.repository.UserRepository
 import com.kumaa.palindrome.databinding.ActivityUserListBinding
 import com.kumaa.palindrome.ui.home.HomeActivity
 import com.kumaa.palindrome.utils.LoadingState
-
+@ExperimentalPagingApi
 class UserListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserListBinding
     private lateinit var viewModel: UserListViewModel
