@@ -1,4 +1,4 @@
-package com.kumaa.palindrome.model
+package com.kumaa.palindrome.data.response
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

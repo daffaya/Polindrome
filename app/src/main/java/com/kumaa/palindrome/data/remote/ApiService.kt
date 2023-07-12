@@ -1,6 +1,6 @@
 package com.kumaa.palindrome.data.remote
 
-import com.kumaa.palindrome.model.UserResponse
+import com.kumaa.palindrome.data.response.UserResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
