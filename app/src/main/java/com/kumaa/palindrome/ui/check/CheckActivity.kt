@@ -7,12 +7,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.kumaa.palindrome.R
 import com.kumaa.palindrome.databinding.ActivityCheckBinding
-import com.kumaa.palindrome.ui.userList.UserListActivity
+import com.kumaa.palindrome.ui.home.HomeActivity
 
 class CheckActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCheckBinding
     private lateinit var viewModel: CheckViewModel
     private var sentence: String = ""
+    private var name: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCheckBinding.inflate(layoutInflater)
@@ -39,12 +40,14 @@ class CheckActivity : AppCompatActivity() {
         }
 
         binding.btnNext.setOnClickListener {
+            name = binding.etName.text.toString()
             navigateToHome()
         }
     }
 
     private fun navigateToHome(){
-        val intent = Intent(this, UserListActivity::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra(HomeActivity.EXTRA_NAME, name)
         startActivity(intent)
     }
 
