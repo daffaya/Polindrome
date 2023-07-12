@@ -20,4 +20,10 @@
     <style name="OpenSansStyle">
         <item name="android:fontFamily">@font/opensans_regular</item>
     </style>
+    <style name="Theme.Palindrome.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Palindrome.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Palindrome.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
