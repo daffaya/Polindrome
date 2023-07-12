@@ -16,4 +16,10 @@
     <string name="email">Email</string>
     <string name="back_button">Back Button</string>
     <string name="user_list">User List</string>
+    <string name="hello">Hello</string>
+    <string name="kumaa">Kumaa</string>
+    <string name="welcome">Welcome</string>
+    <string name="home">Home</string>
+    <string name="selected_user_name">Selected User Name</string>
+    <string name="select_user">Select a User</string>
 </resources>
