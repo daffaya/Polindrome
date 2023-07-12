@@ -1,11 +1,8 @@
 package com.kumaa.palindrome.ui.userList
 
-import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.util.Pair
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +10,7 @@ import com.kumaa.palindrome.data.response.UserItem
 import com.kumaa.palindrome.databinding.ItemUserBinding
 import com.kumaa.palindrome.utils.setImageFromUrl
 
-class UserListAdapter: PagingDataAdapter<UserItem, UserListAdapter.ListViewHolder>(DiffCallback) {
+class UserListAdapter(private val onClick: (UserItem) -> Unit): PagingDataAdapter<UserItem, UserListAdapter.ListViewHolder>(DiffCallback) {
 
     class ListViewHolder(private val binding: ItemUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -23,21 +20,6 @@ class UserListAdapter: PagingDataAdapter<UserItem, UserListAdapter.ListViewHolde
                 tvLastName.text = user.lastName
                 tvUserEmail.text = user.email
                 ivItemPhoto.setImageFromUrl(context, user.avatar)
-
-                root.setOnClickListener {
-                    ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        root.context as Activity,
-                        Pair(ivItemPhoto, "profile_picture"),
-                        Pair(tvFirstName, "first_name"),
-                        Pair(tvLastName, "last_name"),
-                        Pair(tvUserEmail, "email")
-                    )
-
-//                    Intent(context, DetailStoryActivity::class.java).also { intent ->
-//                        intent.putExtra(DetailStoryActivity.EXTRA_DETAIL, story)
-//                        context.startActivity(intent, optionsCompat.toBundle())
-//                    }
-                }
             }
         }
     }
@@ -51,6 +33,12 @@ class UserListAdapter: PagingDataAdapter<UserItem, UserListAdapter.ListViewHolde
         val user = getItem(position)
         if (user != null){
             holder.bind(holder.itemView.context, user)
+        }
+
+        holder.itemView.setOnClickListener {
+            user?.let {
+                onClick(it)
+            }
         }
     }
 

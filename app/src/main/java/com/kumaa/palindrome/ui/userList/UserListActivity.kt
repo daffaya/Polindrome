@@ -1,5 +1,6 @@
 package com.kumaa.palindrome.ui.userList
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -8,10 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kumaa.palindrome.data.remote.ApiConfig
 import com.kumaa.palindrome.data.repository.UserRepository
 import com.kumaa.palindrome.databinding.ActivityUserListBinding
+import com.kumaa.palindrome.ui.home.HomeActivity
 import com.kumaa.palindrome.utils.LoadingState
 
 class UserListActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityUserListBinding
+    private lateinit var binding: ActivityUserListBinding
     private lateinit var viewModel: UserListViewModel
     private lateinit var adapter: UserListAdapter
     private lateinit var recyclerView: RecyclerView
@@ -33,14 +35,21 @@ class UserListActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        adapter = UserListAdapter()
+        adapter = UserListAdapter() {
+            val intent = Intent(this, HomeActivity::class.java).apply {
+                putExtra("name", "${it.firstName} ${it.lastName}")
+            }
+            setResult(200, intent)
+            finish()
+        }
         recyclerView = binding.rvStory
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
     }
 
     private fun setupViewModel() {
-        viewModel = ViewModelProvider(this, UserListViewModelFactory(repo))[UserListViewModel::class.java]
+        viewModel =
+            ViewModelProvider(this, UserListViewModelFactory(repo))[UserListViewModel::class.java]
 
         viewModel.userList.observe(this) { pagingData ->
             adapter.submitData(lifecycle, pagingData)
@@ -62,11 +71,11 @@ class UserListActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupUserList(){
+    private fun setupUserList() {
         viewModel.fetchUserList()
     }
 
-    private fun setupBackButton(){
+    private fun setupBackButton() {
         binding.ivBackButton.setOnClickListener {
             finish()
         }

@@ -2,6 +2,7 @@ package com.kumaa.palindrome.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.kumaa.palindrome.data.remote.ApiConfig
@@ -38,21 +39,23 @@ class HomeActivity : AppCompatActivity() {
 
         binding.btnSelect.setOnClickListener {
             val intent = Intent(this, UserListActivity::class.java)
-            startActivity(intent)
+            activityResultLauncher.launch(intent)
         }
 
         viewModel.showName.observe(this) { showName ->
             binding.tvUserName.text = showName.toString()
-        }
-
-        viewModel.selectedUserName.observe(this) { selectedUserName ->
-            binding.tvSelectedUser.text = selectedUserName.toString()
         }
     }
 
     private fun setupBackButton(){
         binding.ivBackButton.setOnClickListener {
             finish()
+        }
+    }
+
+    private var activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        result -> if (result != null && result.resultCode == 200){
+        binding.tvSelectedUser.text = result.data?.getStringExtra("name")
         }
     }
     companion object {
