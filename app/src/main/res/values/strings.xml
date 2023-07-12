@@ -22,4 +22,6 @@
     <string name="home">Home</string>
     <string name="selected_user_name">Selected User Name</string>
     <string name="select_user">Select a User</string>
+    <string name="ispalindrome">%s is a Palindrome</string>
+    <string name="not_palindrome">%s is not a Palindrome</string>
 </resources>
