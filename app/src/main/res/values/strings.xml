@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Palindrome</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="name">Name</string>
+    <string name="palindrome">Palindrome</string>
+    <string name="check">Check</string>
+    <string name="next">Next</string>
 </resources>

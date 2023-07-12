@@ -5,6 +5,85 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.check.CheckActivity">
-    
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/add_profile"
+        android:layout_width="@dimen/spacing_120"
+        android:layout_height="@dimen/spacing_120"
+        app:cardCornerRadius="128dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardBackgroundColor="?attr/colorPrimary"
+        android:layout_marginTop="@dimen/spacing_120">
+
+        <ImageView
+            android:id="@+id/iv_profile_picture"
+            android:layout_width="@dimen/spacing_32"
+            android:layout_height="@dimen/spacing_32"
+            android:src="@drawable/ic_person_add"
+            android:layout_gravity="center"
+            android:contentDescription="@string/profile_picture"
+            app:tint="@color/white" />
+
+    </androidx.cardview.widget.CardView>
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_32"
+        android:layout_marginTop="@dimen/spacing_40"
+        android:autofillHints="@string/name"
+        android:drawableStart="@drawable/ic_account"
+        android:drawablePadding="@dimen/spacing_6"
+        android:hint="@string/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_profile"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/et_palindrome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_32"
+        android:layout_marginTop="@dimen/spacing_18"
+        android:autofillHints="@string/palindrome"
+        android:drawableStart="@drawable/ic_account"
+        android:drawablePadding="@dimen/spacing_6"
+        android:hint="@string/palindrome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_name"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/btn_check"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_32"
+        android:layout_marginTop="@dimen/spacing_40"
+        android:padding="@dimen/spacing_12"
+        android:textColor="@color/white"
+        android:text="@string/check"
+        android:background="@drawable/bg_button_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_palindrome" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_32"
+        android:layout_marginTop="@dimen/spacing_24"
+        android:padding="@dimen/spacing_12"
+        android:textColor="@color/white"
+        android:text="@string/next"
+        android:background="@drawable/bg_button_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_check" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

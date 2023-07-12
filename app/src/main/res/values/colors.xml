@@ -7,4 +7,27 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">@color/green_700</color>
+    <color name="transparent_green">#dfe5e9</color>
+    <color name="transparent_green_background">#D8F9EC</color>
+    <color name="colorPrimaryVariant">@color/green_500</color>
+    <color name="green_500">#a8c2cc</color>
+    <color name="green_700">#6A9AA5</color>
+    <color name="dark_green">#346470</color>
+
+    <!-- Palindrome Color Palette -->
+    <color name="light_green">#82DBB9</color>
+    <color name="pastel_orange">#FF966E</color>
+    <color name="blue">#3E85F3</color>
+    <color name="yellow">#FFCE46</color>
+    <color name="pink">#E27BF5</color>
+    <color name="purple">#7C5EF1</color>
+    <color name="gray">#BDBDBD</color>
+    <color name="gray_background">#2F2F2F</color>
+    <color name="dark_gray">#212121</color>
+    <color name="white_mode">#FDFFFD</color>
+    <color name="light_background">#F4F8FB</color>
+
+    <attr name="colorTextDark" format="color" />
 </resources>
