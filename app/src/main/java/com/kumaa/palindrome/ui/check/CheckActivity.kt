@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.kumaa.palindrome.R
 import com.kumaa.palindrome.databinding.ActivityCheckBinding
-import com.kumaa.palindrome.ui.home.HomeActivity
+import com.kumaa.palindrome.ui.userList.UserListActivity
 
 class CheckActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCheckBinding
@@ -44,7 +44,7 @@ class CheckActivity : AppCompatActivity() {
     }
 
     private fun navigateToHome(){
-        val intent = Intent(this, HomeActivity::class.java)
+        val intent = Intent(this, UserListActivity::class.java)
         startActivity(intent)
     }
 
