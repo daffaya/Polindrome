@@ -10,7 +10,7 @@
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="previous">Previous</string>
-
+    <string name="check_required">Please input text first.</string>
     <string name="name_required">Name is required</string>
     <string name="email">Email</string>
     <string name="back_button">Back Button</string>

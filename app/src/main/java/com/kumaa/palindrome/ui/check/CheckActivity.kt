@@ -29,7 +29,11 @@ class CheckActivity : AppCompatActivity() {
     private fun setupAction(){
         binding.btnCheck.setOnClickListener {
             sentence = binding.etPalindrome.text.toString()
-            viewModel.performPalindromeCheck(sentence)
+            if (sentence.isEmpty()){
+                showSnackBar(getString(R.string.check_required))
+            }else{
+                viewModel.performPalindromeCheck(sentence)
+            }
         }
 
         viewModel.checkResult.observe(this) { isPalindrome ->
