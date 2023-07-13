@@ -43,8 +43,14 @@ class CheckActivity : AppCompatActivity() {
 
         binding.btnNext.setOnClickListener {
             name = binding.etName.text.toString()
-            navigateToHome()
+            if (name.isEmpty()) {
+                binding.etName.error = getString(R.string.name_required)
+                showSnackBar(getString(R.string.name_required))
+            } else {
+                navigateToHome()
+            }
         }
+
     }
 
     private fun navigateToHome(){

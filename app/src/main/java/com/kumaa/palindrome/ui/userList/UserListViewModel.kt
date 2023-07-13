@@ -41,12 +41,7 @@ class UserListViewModel(private val repo: UserRepository) : ViewModel() {
         }
     }
 
-    fun refreshUserList() {
-        (userList as? LiveData<PagingData<UserItem>>)?.value
-        fetchUserList()
-    }
-
     companion object {
-        const val PER_PAGE = 3
+        const val PER_PAGE = 5
     }
 }

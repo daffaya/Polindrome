@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
+import com.kumaa.palindrome.R
 import com.kumaa.palindrome.data.remote.ApiConfig
 import com.kumaa.palindrome.data.repository.UserRepository
 import com.kumaa.palindrome.databinding.ActivityUserListBinding
@@ -27,11 +29,11 @@ class UserListActivity : AppCompatActivity() {
         val apiService = ApiConfig.getApiService()
         repo = UserRepository(apiService)
         setupRecyclerView()
-        swipeRefresh()
 
         setupViewModel()
         setupUserList()
 
+        swipeRefresh()
         setupBackButton()
     }
 
@@ -59,14 +61,13 @@ class UserListActivity : AppCompatActivity() {
         viewModel.loadingState.observe(this) { loadingState ->
             when (loadingState) {
                 is LoadingState.Loading -> {
-                    binding.swipeRefresh.isRefreshing = true
+
                 }
                 is LoadingState.Success -> {
-                    binding.swipeRefresh.isRefreshing = false
+
                 }
                 is LoadingState.Error -> {
-                    binding.swipeRefresh.isRefreshing = false
-                    // Show error message or handle the error state
+                    showSnackBar(getString(R.string.empty_data))
                 }
             }
         }
@@ -84,7 +85,12 @@ class UserListActivity : AppCompatActivity() {
 
     private fun swipeRefresh() {
         binding.swipeRefresh.setOnRefreshListener {
-            viewModel.refreshUserList()
+            adapter.refresh()
+            binding.swipeRefresh.isRefreshing = false
         }
+    }
+
+    private fun showSnackBar(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
 }
