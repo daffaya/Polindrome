@@ -2,6 +2,7 @@ package com.kumaa.palindrome.ui.userList
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.paging.ExperimentalPagingApi
@@ -77,6 +78,15 @@ class UserListActivity : AppCompatActivity() {
         viewModel.fetchUserList()
     }
 
+    private fun showEmptyState(show: Boolean) {
+        if (show) {
+            binding.tvNotFoundError.visibility = View.VISIBLE
+            binding.ivNotFoundError.visibility = View.VISIBLE
+        } else {
+            binding.tvNotFoundError.visibility = View.GONE
+            binding.ivNotFoundError.visibility = View.GONE
+        }
+    }
     private fun setupBackButton() {
         binding.ivBackButton.setOnClickListener {
             finish()

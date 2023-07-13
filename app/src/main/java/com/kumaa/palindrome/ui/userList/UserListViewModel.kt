@@ -6,12 +6,11 @@ import com.kumaa.palindrome.data.repository.UserRepository
 import com.kumaa.palindrome.data.response.UserItem
 import com.kumaa.palindrome.utils.LoadingState
 import com.kumaa.palindrome.utils.UserPagingSource
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-@ExperimentalPagingApi
 class UserListViewModel(private val repo: UserRepository) : ViewModel() {
-    private lateinit var userListFlow: Flow<PagingData<UserItem>>
+    private var userListFlow: Flow<PagingData<UserItem>> = flowOf(PagingData.empty())
     val userList: LiveData<PagingData<UserItem>> by lazy {
         userListFlow.asLiveData()
     }
@@ -23,6 +22,7 @@ class UserListViewModel(private val repo: UserRepository) : ViewModel() {
         fetchUserList()
     }
 
+    @OptIn(ExperimentalPagingApi::class)
     fun fetchUserList() {
         viewModelScope.launch {
             try {
